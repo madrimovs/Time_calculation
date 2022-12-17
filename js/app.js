@@ -1,5 +1,3 @@
-// let person = Number((`Masofani kiriting`, "4"));
-
 const walking = document.querySelector(".walk"),
   byBice = document.querySelector(".bice"),
   byCar = document.querySelector(".car"),
