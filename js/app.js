@@ -1,36 +1,43 @@
-let walk = +prompt("Masofani kiriting", "");
+// let person = Number((`Masofani kiriting`, "4"));
 
-if (!isNaN(walk) && walk != 0) {
-  const walking = document.querySelector(".card-walk"),
-    byBice = document.querySelector(".card-bice"),
-    byCar = document.querySelector(".card-car"),
-    byPlane = document.querySelector(".card-plane");
-  const person = 3.6,
-    bice = 20.1,
-    car = 70,
-    plane = 800;
-  //walk
-  let Hour = Math.floor(walk / person),
-    Minute = Math.floor((walk / person - Hour) * 60),
-    Secund = Math.floor(((walk / person - Hour) * 60 - Minute) * 60);
-  walking.textContent = `${Hour} soat ${Minute} minut ${Secund} sekund`;
-  //bice
-  let biceHour = Math.floor(walk / bice),
-    biceMinute = Math.floor((walk / bice - biceHour) * 60),
-    biceSecund = Math.floor(((walk / bice - biceHour) * 60 - biceMinute) * 60);
-  byBice.textContent = `${biceHour} soat ${biceMinute} minut ${biceSecund} sekund`;
-  //car
-  let carHour = Math.floor(walk / car),
-    carMinute = Math.floor((walk / car - carHour) * 60),
-    carSecund = Math.floor(((walk / car - carHour) * 60 - carMinute) * 60);
-  byCar.textContent = `${carHour} soat ${carMinute} minut ${carSecund} sekund`;
-  //plane
-  let planeHour = Math.floor(walk / plane),
-    planeMinute = Math.floor((walk / plane - planeHour) * 60),
-    planeSecund = Math.floor(
-      ((walk / plane - planeHour) * 60 - planeMinute) * 60
-    );
-  byPlane.textContent = `${planeHour} soat ${planeMinute} minut ${planeSecund} sekund`;
-} else {
-  alert("Noto'g'ri malumot kiritildi");
-}
+const walking = document.querySelector(".walk"),
+  byBice = document.querySelector(".bice"),
+  byCar = document.querySelector(".car"),
+  byPlane = document.querySelector(".plane"),
+  elInput = document.querySelector(".input"),
+  elForm = document.querySelector(".form");
+
+elForm.addEventListener("submit", function (evt) {
+  evt.preventDefault();
+  const person = Number(elInput.value);
+  elInput.value = "";
+  if (!isNaN(person)) {
+    const walk = 3.6,
+      bice = 20.1,
+      car = 70,
+      plane = 800;
+    //walk
+    const walkHour = Math.floor(person / walk),
+      walkMinute = Math.floor((person / walk - walkHour) * 60),
+      walkSec = Math.floor(((person / walk - walkHour) * 60 - walkMinute) * 60);
+    //bice
+    const biceHour = Math.floor(person / bice),
+      biceMinute = Math.floor((person / bice - biceHour) * 60),
+      biceSec = Math.floor(((person / bice - biceHour) * 60 - biceMinute) * 60);
+    //car
+    const carHour = Math.floor(person / car),
+      carMinute = Math.floor((person / car - carHour) * 60),
+      carSec = Math.floor(((person / car - carHour) * 60 - carMinute) * 60);
+    //plane
+    const planeHour = Math.floor(person / plane),
+      planeMinute = Math.floor((person / plane - planeHour) * 60),
+      planeSec = Math.floor(
+        ((person / plane - planeHour) * 60 - planeMinute) * 60
+      );
+    //result
+    walking.textContent = `${walkHour} soat ${walkMinute} minut ${walkSec} sekund`;
+    byBice.textContent = `${biceHour} soat ${biceMinute} minut ${biceSec} sekund`;
+    byCar.textContent = `${carHour} soat ${carMinute} minut ${carSec} sekund`;
+    byPlane.textContent = `${planeHour} soat ${planeMinute} minut ${planeSec} sekund`;
+  }
+});
